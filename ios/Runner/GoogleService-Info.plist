@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>149495115113-dcj1qe28l8lqubvl1om1preri6ubpec2.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.149495115113-dcj1qe28l8lqubvl1om1preri6ubpec2</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>149495115113-01dahv7vsc11o6mu31pcmfre2l3v5m8m.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA3vYlCNlf6IjkjTmpUpY1-5Hw_nSPZnVg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>149495115113</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.switchapp.cluster</string>
+	<key>PROJECT_ID</key>
+	<string>double-slit-world</string>
+	<key>STORAGE_BUCKET</key>
+	<string>double-slit-world.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:149495115113:ios:6c3085f43eaf2e948861f8</string>
+	<key>DATABASE_URL</key>
+	<string>https://double-slit-world-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
