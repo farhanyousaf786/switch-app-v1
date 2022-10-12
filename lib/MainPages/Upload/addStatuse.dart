@@ -1,5 +1,3 @@
-
-
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:delayed_display/delayed_display.dart';
@@ -52,7 +50,7 @@ class _AddStatusState extends State<AddStatus> {
   @override
   void initState() {
     super.initState();
-  
+
     if (widget.type == "photo" || widget.type == "meme") imageFromGallery();
   }
 
@@ -162,6 +160,10 @@ class _AddStatusState extends State<AddStatus> {
                     height: 100,
                     child: TextButton(
                       onPressed: () => {
+
+
+                     print(">>>>:: ${dotenv.env['ACCESS_KEY']}"),
+
                         controllAndUploadData(),
                       },
                       child: Center(
@@ -421,9 +423,9 @@ class _AddStatusState extends State<AddStatus> {
       });
     } else {
       await compressImage();
+      print(">>>>:: ${dotenv.env['ACCESS_KEY']}");
+
       uploadInDOSpace(file);
-
-
     }
   }
 
@@ -498,10 +500,15 @@ class _AddStatusState extends State<AddStatus> {
   /// Upload in DO via space
 
   uploadInDOSpace(mImageFile) async {
-    dospace.Spaces spaces =  dospace.Spaces(
+
+
+    print(">>>>:: ${dotenv.env['ACCESS_KEY']}");
+
+    dospace.Spaces spaces = dospace.Spaces(
       //change with your project's region
       region: "nyc3",
       //change with your project's accessKey
+
       accessKey: dotenv.env['ACCESS_KEY'],
       secretKey: dotenv.env['SECRET_KEY'],
     );
@@ -763,8 +770,6 @@ class _AddStatusState extends State<AddStatus> {
   // This is ad Area for Switch Shot Meme
   ///*****///
 
-
-
   // late InterstitialAd _interstitialAd;
   // bool _isLoaded = false;
   //
@@ -808,17 +813,16 @@ class _AddStatusState extends State<AddStatus> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-
                     child: Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Row(
-                        crossAxisAlignment:
-                        CrossAxisAlignment.center,
-                        mainAxisAlignment:
-                        MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.linear_scale_sharp,
-                            color: Colors.white,),
+                          Icon(
+                            Icons.linear_scale_sharp,
+                            color: Colors.white,
+                          ),
                         ],
                       ),
                     ),
@@ -841,6 +845,7 @@ class _AddStatusState extends State<AddStatus> {
                   SizedBox(
                     height: 10,
                   ),
+
                   ///Slit is here
 
                   // widget.type == "meme" || widget.type == "videoMeme"
@@ -855,8 +860,6 @@ class _AddStatusState extends State<AddStatus> {
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
                       onTap: () {
-
-                       
                         Navigator.pop(context);
                         Navigator.pop(context);
                       },

@@ -880,24 +880,24 @@ class _MainFeedState extends State<MainFeed> {
                                     ),
                                     TextButton(
                                       onPressed: () => {
-                                        Navigator.push(
-                                            context,
-                                            PageTransition(
-                                              type: PageTransitionType
-                                                  .bottomToTop,
-                                              child: Provider<User>.value(
-                                                value: user,
-                                                child: AddStatus(
-                                                  type: "photo",
-                                                  uid: user.uid,
-                                                ),
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                Provider<User>.value(
+                                              value: user,
+                                              child: AddStatus(
+                                                type: "photo",
+                                                uid: user.uid,
                                               ),
-                                            )),
+                                            ),
+                                          ),
+                                        )
                                       },
                                       child: Center(
                                           child: Column(
+                                        // ignore: prefer_const_literals_to_create_immutables
                                         children: [
-                                          Text(
+                                          const Text(
                                             "Upload Photo",
                                             style: TextStyle(
                                                 fontFamily: 'cutes',
@@ -905,8 +905,8 @@ class _MainFeedState extends State<MainFeed> {
                                                 fontSize: 13,
                                                 color: Colors.blue),
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                          const Padding(
+                                            padding: EdgeInsets.all(8.0),
                                             child: Icon(
                                               Icons.insert_photo_outlined,
                                               color: Colors.blue,
