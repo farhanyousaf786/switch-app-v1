@@ -1,128 +1,139 @@
+// @dart=2.9
+
+import 'package:cluster/Bridges/landingPage.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
-import 'Universal/firebase_options.dart';
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'Authentication/Auth.dart';
+import 'Themes/theme_services.dart';
+import 'Universal/Constans.dart';
 
 void main() async {
+  _launchURL(String updateLink) async {
+    if (await canLaunch(updateLink)) {
+      await launch(updateLink);
+    } else {
+      throw 'Could not launch $updateLink';
+    }
+  }
 
-  await dotenv.load();
+  // Error widget use to show the error in better UI instead for
+  // Red harsh screen
+
+  ErrorWidget.builder = (FlutterErrorDetails details) => Scaffold(
+        body: Center(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Text(
+                        "Internet Error or Restart app",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontFamily: 'cute',
+                            color: Colors.blue,
+                            fontSize: 12),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Text(
+                        "or",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontFamily: 'cute',
+                            color: Colors.green,
+                            fontSize: 12),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () =>
+                          _launchURL('http://switchapp.live/#/switchappinfo'),
+                      child: Padding(
+                        padding: const EdgeInsets.all(3.0),
+                        child: Text(
+                          "Click here",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'cute',
+                              color: Colors.blue,
+                              fontSize: 12),
+                        ),
+                      ),
+                    ),
+                    Center(
+                        child: SpinKitThreeBounce(
+                      color: Colors.blue,
+                      size: 12,
+                    )),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+  //The WidgetFlutterBinding is used to interact with the Flutter engine.
+  // Firebase.initializeApp() needs to call native code to initialize Firebase,
+  // and since the plugin needs to use platform channels to call the native code,
+  // which is done asynchronously therefore you have to call ensureInitialized()
+  // to make sure that you have an instance of the WidgetsBinding.
+
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
 
-  runApp(const MyApp());
+  await Firebase.initializeApp();
 
+  // MobileAds.instance.initialize();
+
+  Constants.isDark = await ThemeService().isDarkTheme();
+
+  runApp(MyApp());
 }
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title:  "farhan"),
-    );
-  }
-}
+    //MultiProvider provides a state management technique that is used
+    // for managing a piece of data around the app. However here we have used
+    // it because we want to tell our App's Parent widget if user is Logged in or not
+    return MultiProvider(
+      providers: [
+        Provider<AuthBase>(
+          create: (_) => Auth(),
+        ),
+      ],
+      child: MaterialApp(
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+        // theme: Themes.light,
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+        // darkTheme: Themes.dark,
 
-  final String title;
+        themeMode:
+            Constants.isDark == "false" ? ThemeMode.light : ThemeMode.dark,
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+        title: "Switch",
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+        debugShowCheckedModeBanner: false,
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+        // this is our home widget, when our app start. our Main widget send us toward first widget
 
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text('${dotenv.env}'),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        // that will be the first screen user will see after launch app
+
+        home: Provider<AuthBase>(
+          create: (_) => Auth(),
+          child: LandingPage(),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
