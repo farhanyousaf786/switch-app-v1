@@ -15,8 +15,15 @@ class AllPosts extends StatefulWidget {
   late bool isVisible;
   late bool hasMore;
   late bool isHide;
+  late ScrollController listScrollController;
 
-  AllPosts({super.key, required this.limitedPostList, required this.isVisible, required this.hasMore, required this.isHide});
+  AllPosts(
+      {super.key,
+      required this.limitedPostList,
+      required this.isVisible,
+      required this.hasMore,
+      required this.isHide,
+      required this.listScrollController});
 
   @override
   State<AllPosts> createState() => _AllPostsState();
@@ -43,7 +50,7 @@ class _AllPostsState extends State<AllPosts> {
             return true;
           },
           child: InViewNotifierList(
-            controller: listScrollController,
+            controller: widget.listScrollController,
             scrollDirection: Axis.vertical,
             initialInViewIds: ['0'],
             isInViewPortCondition: (double deltaTop, double deltaBottom,
@@ -153,10 +160,10 @@ class _AllPostsState extends State<AllPosts> {
                 slidingBeginOffset: Offset(0.0, 1),
                 child: GestureDetector(
                   onTap: () {
-                    if (listScrollController.hasClients) {
+                    if (widget.listScrollController.hasClients) {
                       final position =
-                          listScrollController.position.minScrollExtent;
-                      listScrollController.animateTo(
+                          widget.listScrollController.position.minScrollExtent;
+                      widget.listScrollController.animateTo(
                         position,
                         duration: Duration(seconds: 1),
                         curve: Curves.easeOut,
