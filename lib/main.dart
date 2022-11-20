@@ -2,7 +2,6 @@
 
 import 'package:cluster/Bridges/landingPage.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +11,7 @@ import 'Themes/theme_services.dart';
 import 'Universal/Constans.dart';
 
 void main() async {
+  // ignore: no_leading_underscores_for_local_identifiers
   _launchURL(String updateLink) async {
     if (await canLaunch(updateLink)) {
       await launch(updateLink);
@@ -32,7 +32,7 @@ void main() async {
                 child: Column(
                   children: [
                    const Padding(
-                      padding: const EdgeInsets.all(3.0),
+                      padding:  EdgeInsets.all(3.0),
                       child: Text(
                         "Internet Error or Restart app",
                         textAlign: TextAlign.center,
@@ -98,7 +98,6 @@ void main() async {
   runApp(MyApp());
 }
 
-// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
