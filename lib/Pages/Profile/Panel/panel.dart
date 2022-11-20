@@ -800,7 +800,7 @@ import 'package:uuid/uuid.dart';
 
 import '../../../Universal/Constans.dart';
 import '../../../Universal/DataBaseRefrences.dart';
-import '../../../UniversalResources/UniversalMethods.dart';
+import '../../../Components/UniversalMethods.dart';
 import '../../SearchPages/MainSearchPage.dart';
 import '../../switchChat/SwitchChat.dart';
 import '../RecentPosts.dart';

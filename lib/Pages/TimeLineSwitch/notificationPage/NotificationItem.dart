@@ -16,7 +16,7 @@ import '../../../Models/SwitchImageCache/SwitchImageCache.dart';
 import '../../../Models/postModel/SinglePostDetail.dart';
 import '../../../Universal/Constans.dart';
 import '../../../Universal/DataBaseRefrences.dart';
-import '../../../UniversalResources/UniversalMethods.dart';
+import '../../../Components/UniversalMethods.dart';
 import '../../Profile/Panelandbody.dart';
 
 class BuildItemForNotification extends StatefulWidget {

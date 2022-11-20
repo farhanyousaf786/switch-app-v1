@@ -1167,7 +1167,7 @@ import '../../../Bridges/landingPage.dart';
 import '../../../Models/surpriseMeme.dart';
 import '../../../Universal/Constans.dart';
 import '../../../Universal/DataBaseRefrences.dart';
-import '../../../UniversalResources/UniversalMethods.dart';
+import '../../../Components/UniversalMethods.dart';
 import '../../Upload/addStatuse.dart';
 import '../../Upload/videoStatus.dart';
 import '../Panelandbody.dart';

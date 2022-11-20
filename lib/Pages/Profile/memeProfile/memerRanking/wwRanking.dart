@@ -121,7 +121,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 import '../../../../Universal/DataBaseRefrences.dart';
-import '../../../../UniversalResources/UniversalMethods.dart';
+import '../../../../Components/UniversalMethods.dart';
 
 class WorldRanking extends StatefulWidget {
   final String profileOwner;

@@ -3081,7 +3081,7 @@ import 'package:cluster/Pages/Profile/body/profieDecency/Buttons/ButtonForTwo.da
 import 'package:cluster/Pages/Profile/body/profieDecency/Buttons/CrushPage.dart';
 import 'package:cluster/Pages/Profile/body/profieDecency/followerPage.dart';
 import 'package:cluster/Models/Marquee.dart';
-import 'package:cluster/UniversalResources/UniversalMethods.dart';
+import 'package:cluster/Components/UniversalMethods.dart';
 import 'package:countup/countup.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:firebase_auth/firebase_auth.dart';
