@@ -2172,7 +2172,12 @@ class _MainFeedState extends State<MainFeed> {
                     : currentLine == 1
                         ? Expanded(
                             key: bottomAllIntro,
-                            child:  AllPosts(limitedPostList: limitedPostList, isVisible: _visible, isHide: _isHide, hasMore: _hasMore,)
+                            child:  AllPosts(limitedPostList: limitedPostList,
+                             isVisible: _visible,
+                              isHide: _isHide,
+                               hasMore: _hasMore,
+                               listScrollController: listScrollController,
+                               user: widget.user, )
                           )
                         : currentLine == 2
                             ? memesOnly()
