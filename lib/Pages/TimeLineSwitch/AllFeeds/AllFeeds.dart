@@ -37,8 +37,8 @@ import '../../Upload/videoStatus.dart';
 import '../MemeAndStuff/memeCompetition/memeComp.dart';
 import '../MemeAndStuff/memeCompetition/participatePage.dart';
 import '../SwitchFavourites/SwitchFav.dart';
-import '../SwitchUpdates/SwitchUpdates.dart';
-import '../YourFeed/YourFeed.dart';
+import 'SwitchUpdates/SwitchUpdates.dart';
+import 'YourFeed/YourFeed.dart';
 import 'MemeOnly/MemesOnly.dart';
 import '../notificationPage/NotificationItem.dart';
 import '../profileIconAndName/profileIconAndName.dart';
@@ -1980,16 +1980,7 @@ class _MainFeedState extends State<MainFeed> {
     });
   }
 
-  Widget yourFeed() {
-    return Provider<User>.value(
-      value: widget.user,
-      child: YourFeed(
-        user: widget.user,
-        isVisible: () {},
-        isHide: isHide,
-      ),
-    );
-  }
+  
 
   Widget memesOnly() {
     return Provider<User>.value(
