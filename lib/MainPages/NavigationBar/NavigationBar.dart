@@ -80,6 +80,7 @@ class _NavigationPageState extends State<NavigationPage>
     checkUnreadMessages();
     Future.delayed(const Duration(seconds: 5), () {
       if (mounted)
+        // ignore: curly_braces_in_flow_control_structures
         setState(() {
           Constants.notifyCounter = 1;
         });
@@ -133,7 +134,7 @@ class _NavigationPageState extends State<NavigationPage>
     final user = Provider.of<User>(context, listen: false);
 
     var initializationSettingsAndroid =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
+        const AndroidInitializationSettings('@mipmap/ic_launcher');
     var initializationSettings =
         InitializationSettings(android: initializationSettingsAndroid);
 

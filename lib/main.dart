@@ -31,7 +31,7 @@ void main() async {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    Padding(
+                   const Padding(
                       padding: const EdgeInsets.all(3.0),
                       child: Text(
                         "Internet Error or Restart app",
@@ -42,8 +42,8 @@ void main() async {
                             fontSize: 12),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(3.0),
+                 const   Padding(
+                      padding:  EdgeInsets.all(3.0),
                       child: Text(
                         "or",
                         textAlign: TextAlign.center,
@@ -56,8 +56,8 @@ void main() async {
                     GestureDetector(
                       onTap: () =>
                           _launchURL('http://switchapp.live/#/switchappinfo'),
-                      child: Padding(
-                        padding: const EdgeInsets.all(3.0),
+                      child: const Padding(
+                        padding:  EdgeInsets.all(3.0),
                         child: Text(
                           "Click here",
                           textAlign: TextAlign.center,
