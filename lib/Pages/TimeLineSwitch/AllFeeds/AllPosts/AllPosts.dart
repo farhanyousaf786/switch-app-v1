@@ -1,3 +1,4 @@
+import 'package:delayed_display/delayed_display.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,11 +11,12 @@ import 'package:provider/provider.dart';
 import 'package:time_formatter/time_formatter.dart';
 
 class AllPosts extends StatefulWidget {
-  
   late List limitedPostList;
-  late bool isVisible; 
+  late bool isVisible;
+  late bool hasMore;
+  late bool isHide;
 
-   AllPosts({super.key, required this.limitedPostList, required this.isVisible});
+  AllPosts({super.key, required this.limitedPostList, required this.isVisible, required this.hasMore, required this.isHide});
 
   @override
   State<AllPosts> createState() => _AllPostsState();
@@ -49,8 +51,9 @@ class _AllPostsState extends State<AllPosts> {
               return deltaTop < (0.5 * viewPortDimension) &&
                   deltaBottom > (0.4 * viewPortDimension);
             },
-            itemCount:
-                _hasMore ? widget.limitedPostList.length + 1 : widget.limitedPostList.length,
+            itemCount: widget.hasMore
+                ? widget.limitedPostList.length + 1
+                : widget.limitedPostList.length,
             builder: (BuildContext context, int index) {
               if (index >= widget.limitedPostList.length) {
                 // Don't trigger if one async loading is already under way
@@ -78,13 +81,14 @@ class _AllPostsState extends State<AllPosts> {
                 int timestamp = widget.limitedPostList[index]['timestamp'];
                 String postId = widget.limitedPostList[index]['postId'];
                 String ownerId = widget.limitedPostList[index]['ownerId'];
-                String description = widget.limitedPostList[index]['description'];
+                String description =
+                    widget.limitedPostList[index]['description'];
                 String type = widget.limitedPostList[index]['type'];
                 String postTheme = widget.limitedPostList[index]['statusTheme'];
                 String time = formatTime(timestamp);
                 return Column(
                   children: [
-                    _isHide
+                    widget.isHide
                         ? Container(
                             height: index == 0 ? 80 : 0,
                           )
