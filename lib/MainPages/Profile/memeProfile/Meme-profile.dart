@@ -1150,7 +1150,7 @@ import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cluster/MainPages/Profile/MemePosts/MemePosts.dart';
 import 'package:cluster/MainPages/Profile/memeProfile/rankingHorizontalList/rankingList.dart';
-import 'package:cluster/MainPages/TimeLineSwitch/MainFeed/MainFeed.dart';
+import 'package:cluster/MainPages/TimeLineSwitch/AllFeeds/AllFeeds.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';

@@ -23,7 +23,7 @@ import '../../../../learning/video_widget.dart';
 import '../../../Profile/Panelandbody.dart';
 import '../../../ReportAndComplaints/postReportPage.dart';
 import '../../../ReportAndComplaints/reportId.dart';
-import '../../MainFeed/CacheImageTemplate.dart';
+import '../../AllFeeds/CacheImageTemplate.dart';
 
 class AllParticipants extends StatefulWidget {
   late User user;

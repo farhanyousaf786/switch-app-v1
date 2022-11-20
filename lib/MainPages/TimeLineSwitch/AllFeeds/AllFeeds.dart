@@ -87,6 +87,9 @@ class _MainFeedState extends State<MainFeed> {
   int heartReact = 0;
   int total = 0;
   bool isNotification = false;
+  int videoMeme = 0;
+  late Map allPostMap;
+  late Map store;
 
   @override
   void initState() {
@@ -105,15 +108,11 @@ class _MainFeedState extends State<MainFeed> {
     super.initState();
   }
 
-  int videoMeme = 0;
-  late Map allPostMap;
-  late Map store;
+
 
   getFirstPostList() async {
     allPostList.clear();
-
     limitedPostList.clear();
-
     switchAllUserFeedPostsRTD
         .child("UserPosts")
         .orderByChild('timestamp')
@@ -122,7 +121,6 @@ class _MainFeedState extends State<MainFeed> {
         .then((DataSnapshot dataSnapshot) {
       if (dataSnapshot.value != null) {
         allPostMap = dataSnapshot.value;
-
         allPostMap.forEach(
             (index, data2) => allPostList.add({"key": index, ...data2}));
       }
@@ -258,6 +256,20 @@ class _MainFeedState extends State<MainFeed> {
                       // });
                     }
                   },
+                  style: ButtonStyle(
+                    overlayColor: _isHide
+                        ? MaterialStateColor.resolveWith(
+                            (states) => Colors.white)
+                        : MaterialStateColor.resolveWith(
+                            (states) => Colors.blue.withOpacity(0.5)),
+                    backgroundColor: _isHide
+                        ? MaterialStateColor.resolveWith((states) =>
+                            Constants.isDark == "true"
+                                ? Colors.white.withOpacity(0.5)
+                                : Colors.white)
+                        : MaterialStateColor.resolveWith(
+                            (states) => Colors.blueAccent.withOpacity(0.1)),
+                  ),
                   child: Row(
                     key: jumpToNextIntro,
                     mainAxisAlignment: _isHide
@@ -278,20 +290,6 @@ class _MainFeedState extends State<MainFeed> {
                         size: 12,
                       ),
                     ],
-                  ),
-                  style: ButtonStyle(
-                    overlayColor: _isHide
-                        ? MaterialStateColor.resolveWith(
-                            (states) => Colors.white)
-                        : MaterialStateColor.resolveWith(
-                            (states) => Colors.blue.withOpacity(0.5)),
-                    backgroundColor: _isHide
-                        ? MaterialStateColor.resolveWith((states) =>
-                            Constants.isDark == "true"
-                                ? Colors.white.withOpacity(0.5)
-                                : Colors.white)
-                        : MaterialStateColor.resolveWith(
-                            (states) => Colors.blueAccent.withOpacity(0.1)),
                   ),
                 ),
               ),
@@ -2147,7 +2145,7 @@ class _MainFeedState extends State<MainFeed> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
+      child: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: Stack(
           children: <Widget>[
@@ -2165,14 +2163,14 @@ class _MainFeedState extends State<MainFeed> {
                   child: !_isHide ? jumpToPosts() : SizedBox(),
                 ),
                 isLoading
-                    ? SizedBox(
+                    ? const SizedBox(
                         height: 100,
                       )
-                    : SizedBox(
+                    : const SizedBox(
                         height: 0,
                       ),
                 isLoading
-                    ? Container(
+                    ?  Container(
                         child: Center(
                           child: Padding(
                             padding: const EdgeInsets.only(top: 20),
