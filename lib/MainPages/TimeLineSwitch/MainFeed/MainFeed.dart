@@ -854,10 +854,11 @@ class _MainFeedState extends State<MainFeed> {
                                               ),
                                             )),
                                       },
-                                      child: Center(
+                                      child:  Center(
                                           child: Column(
+                                        // ignore: prefer_const_literals_to_create_immutables
                                         children: [
-                                          Text(
+                                         const  Text(
                                             "Share Thoughts",
                                             style: TextStyle(
                                                 fontFamily: 'cutes',
@@ -865,8 +866,8 @@ class _MainFeedState extends State<MainFeed> {
                                                 fontSize: 13,
                                                 color: Colors.blue),
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                        const  Padding(
+                                            padding:  EdgeInsets.all(8.0),
                                             child: Icon(
                                               Icons.all_inclusive,
                                               color: Colors.blue,
@@ -875,7 +876,7 @@ class _MainFeedState extends State<MainFeed> {
                                         ],
                                       )),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     TextButton(
@@ -918,7 +919,7 @@ class _MainFeedState extends State<MainFeed> {
                                   ],
                                 ),
                               ),
-                              Padding(
+                             const Padding(
                                 padding: const EdgeInsets.all(15.0),
                                 child: Text(
                                   "OR",
@@ -946,8 +947,8 @@ class _MainFeedState extends State<MainFeed> {
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
-                                          children: [
-                                            Text(
+                                          children: const [
+                                             Text(
                                               "Upload Meme",
                                               style: TextStyle(
                                                   fontFamily: 'cute',
@@ -956,7 +957,7 @@ class _MainFeedState extends State<MainFeed> {
                                             ),
                                             Padding(
                                               padding:
-                                                  const EdgeInsets.all(8.0),
+                                                   EdgeInsets.all(8.0),
                                               child: Icon(
                                                 Icons
                                                     .fiber_smart_record_outlined,
@@ -973,48 +974,46 @@ class _MainFeedState extends State<MainFeed> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     DelayedDisplay(
                       fadeIn: true,
-                      delay: Duration(milliseconds: 500),
-                      slidingBeginOffset: Offset(0.0, 0.40),
+                      delay: const Duration(milliseconds: 500),
+                      slidingBeginOffset: const Offset(0.0, 0.40),
                       child: Padding(
                         padding:
                             const EdgeInsets.only(left: 8, bottom: 5, top: 5),
                         child: Row(
+                          // ignore: prefer_const_literals_to_create_immutables
                           children: [
-                            Container(
-                                child: Flexible(
-                                    child: Text(
+                            const Flexible(
+                                child: Text(
                               "Where to find my uploaded MEME/STATUS?",
                               style: TextStyle(
-                                  color: Colors.blue,
-                                  fontFamily: 'cute',
-                                  fontSize: 17),
-                            ))),
+                              color: Colors.blue,
+                              fontFamily: 'cute',
+                              fontSize: 17),
+                            )),
                           ],
                         ),
                       ),
                     ),
                     DelayedDisplay(
                       fadeIn: true,
-                      delay: Duration(milliseconds: 600),
+                      delay: const Duration(milliseconds: 600),
                       slidingBeginOffset: Offset(0.0, 0.40),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8),
                         child: Row(
                           children: [
-                            Container(
-                              child: Flexible(
-                                child: Text(
-                                  "Your uploaded Memes are in Meme Profile. Open App > Click on Meme on bottom bar > There will be two options at the bottom (One for Flick Meme / One for Shot Meme).",
-                                  style: TextStyle(
-                                      color: Colors.blue.shade700,
-                                      fontFamily: 'cutes',
-                                      fontSize: 13),
-                                ),
+                            Flexible(
+                              child: Text(
+                                "Your uploaded Memes are in Meme Profile. Open App > Click on Meme on bottom bar > There will be two options at the bottom (One for Flick Meme / One for Shot Meme).",
+                                style: TextStyle(
+                                    color: Colors.blue.shade700,
+                                    fontFamily: 'cutes',
+                                    fontSize: 13),
                               ),
                             ),
                           ],
