@@ -22,7 +22,7 @@ import '../../../Universal/DataBaseRefrences.dart';
 import '../../../learning/video_widget.dart';
 import '../../ReportAndComplaints/postReportPage.dart';
 import '../../ReportAndComplaints/reportId.dart';
-import '../../TimeLineSwitch/AllFeeds/CacheImageTemplate.dart';
+import '../../AllFeeds/CacheImageTemplate.dart';
 import '../Panelandbody.dart';
 
 class AllMemePosts extends StatefulWidget {

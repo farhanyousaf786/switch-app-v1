@@ -26,7 +26,7 @@ import '../../Universal/Constans.dart';
 import '../../Universal/DataBaseRefrences.dart';
 import '../AppSettings/settings.dart';
 import '../Profile/memeProfile/Meme-profile.dart';
-import '../TimeLineSwitch/AllFeeds/AllFeeds.dart';
+import '../AllFeeds/AllFeeds.dart';
 import '../switchChat/SwitchChatList.dart';
 
 class NavigationPage extends StatefulWidget {
