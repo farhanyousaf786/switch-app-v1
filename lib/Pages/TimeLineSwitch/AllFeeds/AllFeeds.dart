@@ -15,14 +15,11 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../Models/Marquee.dart';
 import '../../../Models/appIntro.dart';
-
 import 'package:time_formatter/time_formatter.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../../Authentication/userAgreementPage.dart';
 import '../../../Models/postModel/CommentsPage.dart';
 import '../../../Models/postModel/PostsReactCounters.dart';
@@ -36,9 +33,9 @@ import '../../Profile/Panelandbody.dart';
 import '../../Upload/videoStatus.dart';
 import '../MemeAndStuff/memeCompetition/memeComp.dart';
 import '../MemeAndStuff/memeCompetition/participatePage.dart';
-import '../SwitchFavourites/SwitchFav.dart';
+import 'AllPosts/AllPosts.dart';
+import 'SwitchFavourites/SwitchFav.dart';
 import 'SwitchUpdates/SwitchUpdates.dart';
-import 'YourFeed/YourFeed.dart';
 import 'MemeOnly/MemesOnly.dart';
 import '../notificationPage/NotificationItem.dart';
 import '../profileIconAndName/profileIconAndName.dart';
@@ -613,7 +610,7 @@ class _MainFeedState extends State<MainFeed> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 2),
                             child: Text(
-                              "Clusty Chat ",
+                              "Clusty",
                               style: TextStyle(
                                   fontSize: 10.0, fontWeight: FontWeight.w700),
                             ),
@@ -2175,199 +2172,7 @@ class _MainFeedState extends State<MainFeed> {
                     : currentLine == 1
                         ? Expanded(
                             key: bottomAllIntro,
-                            child: Stack(
-                              children: [
-                                NotificationListener<UserScrollNotification>(
-                                  onNotification: (notification) {
-                                    final ScrollDirection direction =
-                                        notification.direction;
-                                    setState(() {
-                                      if (direction ==
-                                          ScrollDirection.reverse) {
-                                        _visible = false;
-
-                                        print("visible: $_visible");
-                                      } else if (direction ==
-                                          ScrollDirection.forward) {
-                                        _visible = true;
-                                        print("visible: $_visible");
-                                      }
-                                    });
-                                    return true;
-                                  },
-                                  child: InViewNotifierList(
-                                    controller: listScrollController,
-                                    scrollDirection: Axis.vertical,
-                                    initialInViewIds: ['0'],
-                                    isInViewPortCondition: (double deltaTop,
-                                        double deltaBottom,
-                                        double viewPortDimension) {
-                                      return deltaTop <
-                                              (0.5 * viewPortDimension) &&
-                                          deltaBottom >
-                                              (0.4 * viewPortDimension);
-                                    },
-                                    itemCount: _hasMore
-                                        ? limitedPostList.length + 1
-                                        : limitedPostList.length,
-                                    builder: (BuildContext context, int index) {
-                                      if (index >= limitedPostList.length) {
-                                        // Don't trigger if one async loading is already under way
-
-                                        return Center(
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                bottom: 3, top: 3),
-                                            child: SizedBox(
-                                              child: Column(
-                                                children: [
-                                                  SpinKitThreeBounce(
-                                                    size: 14,
-                                                    color: Colors.grey,
-                                                  ),
-                                                ],
-                                              ),
-                                              height: 100,
-                                              width: 120,
-                                            ),
-                                          ),
-                                        );
-                                      } else {
-                                        final user = Provider.of<User>(context,
-                                            listen: false);
-                                        String url =
-                                            limitedPostList[index]['url'];
-                                        int timestamp =
-                                            limitedPostList[index]['timestamp'];
-                                        String postId =
-                                            limitedPostList[index]['postId'];
-                                        String ownerId =
-                                            limitedPostList[index]['ownerId'];
-                                        String description =
-                                            limitedPostList[index]
-                                                ['description'];
-                                        String type =
-                                            limitedPostList[index]['type'];
-                                        String postTheme =
-                                            limitedPostList[index]
-                                                ['statusTheme'];
-                                        String time = formatTime(timestamp);
-                                        return Column(
-                                          children: [
-                                            _isHide
-                                                ? Container(
-                                                    height: index == 0 ? 80 : 0,
-                                                  )
-                                                : Container(
-                                                    height: 0,
-                                                  ),
-
-                                            GestureDetector(
-                                              onTap: () {
-                                                _getUserDetail(ownerId);
-                                              },
-                                              child: _showProfilePicAndName(
-                                                  ownerId,
-                                                  time,
-                                                  postId,
-                                                  postTheme == ""
-                                                      ? "photo"
-                                                      : postTheme,
-                                                  type,
-                                                  description,
-                                                  url,
-                                                  index),
-                                            ),
-
-                                            type == "thoughts"
-                                                ? TextStatus(
-                                                    description: description)
-                                                : type == "videoMeme" ||
-                                                        type == "videoMemeT"
-                                                    ? _videoPosts(index)
-                                                    : imagePosts(index),
-
-                                            type == "thoughts"
-                                                ? Container(
-                                                    height: 10.0,
-                                                  )
-                                                : Container(
-                                                    height: 5,
-                                                  ),
-                                            _postFooter(user, postId, ownerId,
-                                                url, postTheme, index, type),
-                                            Container(
-                                              height: 10,
-                                            ),
-
-                                            type != "thoughts"
-                                                ? _description(description)
-                                                : Container(
-                                                    height: 0,
-                                                    width: 0,
-                                                  ),
-                                            // creatPostFooter(),
-
-                                            Container(
-                                              height: 20,
-                                            ),
-                                          ],
-                                        );
-                                      }
-                                    },
-                                  ),
-                                ),
-                                _visible
-                                    ? DelayedDisplay(
-                                        delay: Duration(milliseconds: 200),
-                                        slidingBeginOffset: Offset(0.0, 1),
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            if (listScrollController
-                                                .hasClients) {
-                                              final position =
-                                                  listScrollController
-                                                      .position.minScrollExtent;
-                                              listScrollController.animateTo(
-                                                position,
-                                                duration: Duration(seconds: 1),
-                                                curve: Curves.easeOut,
-                                              );
-                                            }
-                                          },
-                                          child: Align(
-                                              alignment: Alignment.bottomRight,
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    bottom: 33, right: 15),
-                                                child: Container(
-                                                  padding: EdgeInsets.all(4),
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.blue
-                                                          .withOpacity(0.7),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              13)),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            6.0),
-                                                    child: Container(
-                                                        child: Icon(
-                                                      Icons.arrow_upward_sharp,
-                                                      size: 15,
-                                                    )),
-                                                  ),
-                                                ),
-                                              )),
-                                        ),
-                                      )
-                                    : Container(
-                                        height: 0.0,
-                                        width: 0.0,
-                                      ),
-                              ],
-                            ),
+                            child:  AllPosts(limitedPostList: limitedPostList, isVisible: _visible, )
                           )
                         : currentLine == 2
                             ? memesOnly()
