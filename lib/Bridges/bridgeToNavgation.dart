@@ -16,8 +16,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../Authentication/Auth.dart';
 import '../Authentication/SignUp/set_username.dart';
-import '../MainPages/NavigationBar/NavigationBar.dart';
-import '../MainPages/ReportAndComplaints/postReportPage.dart';
+import '../Pages/NavigationBar/NavigationBar.dart';
+import '../Pages/ReportAndComplaints/postReportPage.dart';
 import '../Universal/Constans.dart';
 import '../Universal/DataBaseRefrences.dart';
 import 'landingPage.dart';

@@ -3073,13 +3073,13 @@
 ///
 ///
 
-import 'package:cluster/MainPages/Profile/body/profieDecency/Buttons/ButtonForFive.dart';
-import 'package:cluster/MainPages/Profile/body/profieDecency/Buttons/ButtonForFour.dart';
-import 'package:cluster/MainPages/Profile/body/profieDecency/Buttons/ButtonForOne.dart';
-import 'package:cluster/MainPages/Profile/body/profieDecency/Buttons/ButtonForThree.dart';
-import 'package:cluster/MainPages/Profile/body/profieDecency/Buttons/ButtonForTwo.dart';
-import 'package:cluster/MainPages/Profile/body/profieDecency/Buttons/CrushPage.dart';
-import 'package:cluster/MainPages/Profile/body/profieDecency/followerPage.dart';
+import 'package:cluster/Pages/Profile/body/profieDecency/Buttons/ButtonForFive.dart';
+import 'package:cluster/Pages/Profile/body/profieDecency/Buttons/ButtonForFour.dart';
+import 'package:cluster/Pages/Profile/body/profieDecency/Buttons/ButtonForOne.dart';
+import 'package:cluster/Pages/Profile/body/profieDecency/Buttons/ButtonForThree.dart';
+import 'package:cluster/Pages/Profile/body/profieDecency/Buttons/ButtonForTwo.dart';
+import 'package:cluster/Pages/Profile/body/profieDecency/Buttons/CrushPage.dart';
+import 'package:cluster/Pages/Profile/body/profieDecency/followerPage.dart';
 import 'package:cluster/Models/Marquee.dart';
 import 'package:cluster/UniversalResources/UniversalMethods.dart';
 import 'package:countup/countup.dart';

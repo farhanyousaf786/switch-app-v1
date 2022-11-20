@@ -1,4 +1,4 @@
-import 'package:cluster/MainPages/TimeLineSwitch/MemeAndStuff/memeCompetition/uploadShotMeme.dart';
+import 'package:cluster/Pages/TimeLineSwitch/MemeAndStuff/memeCompetition/uploadShotMeme.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

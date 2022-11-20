@@ -6,7 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:video_player/video_player.dart';
 
 import '../Bridges/landingPage.dart';
-import '../MainPages/TimeLineSwitch/AllFeeds/CacheImageTemplate.dart';
+import '../Pages/TimeLineSwitch/AllFeeds/CacheImageTemplate.dart';
 
 class SurpriseMeme extends StatefulWidget {
   final String url;

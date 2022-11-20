@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:cluster/MainPages/TimeLineSwitch/MemeAndStuff/memeCompetition/participatePage.dart';
+import 'package:cluster/Pages/TimeLineSwitch/MemeAndStuff/memeCompetition/participatePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/gestures.dart';

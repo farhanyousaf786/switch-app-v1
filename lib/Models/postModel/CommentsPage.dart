@@ -13,8 +13,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timeago/timeago.dart' as tAgo;
 import 'package:uuid/uuid.dart';
 
-import '../../MainPages/Profile/Panelandbody.dart';
-import '../../MainPages/ReportAndComplaints/postReportPage.dart';
+import '../../Pages/Profile/Panelandbody.dart';
+import '../../Pages/ReportAndComplaints/postReportPage.dart';
 import '../../Universal/Constans.dart';
 import '../../Universal/DataBaseRefrences.dart';
 

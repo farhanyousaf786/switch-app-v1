@@ -1,4 +1,4 @@
-import 'package:cluster/MainPages/switchChat/relationShipButtons.dart';
+import 'package:cluster/Pages/switchChat/relationShipButtons.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';

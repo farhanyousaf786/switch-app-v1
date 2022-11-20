@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../MainPages/Profile/memeProfile/Meme-profile.dart';
+import '../Pages/Profile/memeProfile/Meme-profile.dart';
 import '../Universal/Constans.dart';
 import '../Universal/DataBaseRefrences.dart';
 

@@ -1,4 +1,4 @@
-import 'package:cluster/MainPages/AppSettings/privacyPolicy.dart';
+import 'package:cluster/Pages/AppSettings/privacyPolicy.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:emojis/emoji.dart';
 import 'package:firebase_auth/firebase_auth.dart';
