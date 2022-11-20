@@ -31,7 +31,7 @@ import '../../../learning/video_widget.dart';
 import '../../Profile/Panelandbody.dart';
 import '../../ReportAndComplaints/postReportPage.dart';
 import '../../ReportAndComplaints/reportId.dart';
-import '../../AllFeeds/CacheImageTemplate.dart';
+import '../AllFeeds/CacheImageTemplate.dart';
 
 class SwitchUpdates extends StatefulWidget {
   late final User user;

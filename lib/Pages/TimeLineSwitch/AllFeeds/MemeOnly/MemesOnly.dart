@@ -20,22 +20,22 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
-import '../../../Models/Marquee.dart';
-import '../../../Models/imageCacheFilter.dart';
+import '../../../../Models/Marquee.dart';
+import '../../../../Models/imageCacheFilter.dart';
 
 import 'package:url_launcher/url_launcher.dart';
-import '../../../../Models/postModel/CommentsPage.dart';
-import '../../../../Models/postModel/PostsReactCounters.dart';
+import '../../../../../Models/postModel/CommentsPage.dart';
+import '../../../../../Models/postModel/PostsReactCounters.dart';
 
 import 'package:time_formatter/time_formatter.dart';
 
-import '../../../Models/postModel/TextStatus.dart';
-import '../../../Universal/Constans.dart';
-import '../../../Universal/DataBaseRefrences.dart';
-import '../../../learning/video_widget.dart';
-import '../../Profile/Panelandbody.dart';
-import '../../ReportAndComplaints/postReportPage.dart';
-import '../../ReportAndComplaints/reportId.dart';
+import '../../../../Models/postModel/TextStatus.dart';
+import '../../../../Universal/Constans.dart';
+import '../../../../Universal/DataBaseRefrences.dart';
+import '../../../../learning/video_widget.dart';
+import '../../../Profile/Panelandbody.dart';
+import '../../../ReportAndComplaints/postReportPage.dart';
+import '../../../ReportAndComplaints/reportId.dart';
 import '../CacheImageTemplate.dart';
 
 class MemesOnly extends StatefulWidget {
