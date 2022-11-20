@@ -39,7 +39,7 @@ import '../MemeAndStuff/memeCompetition/participatePage.dart';
 import '../SwitchFavourites/SwitchFav.dart';
 import '../SwitchUpdates/SwitchUpdates.dart';
 import '../YourFeed/YourFeed.dart';
-import '../meme_Only/memes_Only.dart';
+import 'meme_Only/memes_Only.dart';
 import '../notificationPage/NotificationItem.dart';
 import '../profileIconAndName/profileIconAndName.dart';
 import '../mainiaTopics/MainiaTopic.dart';
@@ -313,7 +313,7 @@ class _MainFeedState extends State<MainFeed> {
                 key: nameAndStuffIntro,
                 value: widget.user,
                 child: DelayedDisplay(
-                  delay: Duration(microseconds: 500),
+                  delay: const Duration(microseconds: 500),
                   slidingBeginOffset: Offset(-1, 0.0),
                   child: ProfileIconAndName(
                     user: widget.user,
