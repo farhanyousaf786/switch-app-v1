@@ -310,8 +310,9 @@ class _AllPostsState extends State<AllPosts> {
                                             CrossAxisAlignment.center,
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
+                                        // ignore: prefer_const_literals_to_create_immutables
                                         children: [
-                                          Icon(
+                                          const Icon(
                                             Icons.linear_scale_sharp,
                                             color: Colors.white,
                                           ),
@@ -478,9 +479,9 @@ class _AllPostsState extends State<AllPosts> {
                                           padding: const EdgeInsets.only(
                                               top: 0, left: 10),
                                           child: ElevatedButton(
-                                            child: Row(
+                                            child:  Row(
                                               children: [
-                                                Text(
+                                              Text(
                                                   'Report Post ',
                                                   style: TextStyle(
                                                     fontFamily: 'cutes',
@@ -628,8 +629,8 @@ class _AllPostsState extends State<AllPosts> {
                           );
                         });
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 0),
+                  child: const Padding(
+                    padding: EdgeInsets.only(right: 0),
                     child: Icon(
                       Icons.more_horiz,
                       // color: selectedIndex == index
