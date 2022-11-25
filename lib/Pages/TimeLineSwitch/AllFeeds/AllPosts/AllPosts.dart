@@ -13,7 +13,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:inview_notifier_list/inview_notifier_list.dart';
 import 'package:provider/provider.dart';
 import 'package:time_formatter/time_formatter.dart';
-
 import '../../../../Models/Marquee.dart';
 import '../../../../Models/postModel/CommentsPage.dart';
 import '../../../../Models/postModel/PostsReactCounters.dart';
@@ -32,25 +31,24 @@ class AllPosts extends StatefulWidget {
   late bool hasMore;
   late bool isHide;
   late ScrollController listScrollController;
-    late User user;
+  late User user;
 
-
-  AllPosts(
-      {super.key,
-      required this.limitedPostList,
-      required this.isVisible,
-      required this.hasMore,
-      required this.isHide,
-      required this.listScrollController,
-      required this.user,});
+  AllPosts({
+    super.key,
+    required this.limitedPostList,
+    required this.isVisible,
+    required this.hasMore,
+    required this.isHide,
+    required this.listScrollController,
+    required this.user,
+  });
 
   @override
   State<AllPosts> createState() => _AllPostsState();
 }
 
 class _AllPostsState extends State<AllPosts> {
-
-   late Map data;
+  late Map data;
   List posts = [];
 
   _postFooter(User user, String postId, String ownerId, String url,
@@ -99,12 +97,12 @@ class _AllPostsState extends State<AllPosts> {
                         child: SingleChildScrollView(
                           child: Column(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.messenger_outline_rounded,
                                 color: Colors.grey,
                                 size: 20,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 2,
                               ),
                               StreamBuilder(
@@ -209,7 +207,6 @@ class _AllPostsState extends State<AllPosts> {
     );
   }
 
-
   _videoPosts(int index) {
     return Container(
       height: 360.0,
@@ -230,6 +227,7 @@ class _AllPostsState extends State<AllPosts> {
       ),
     );
   }
+
   _getUserDetail(String ownerId) {
     User user = Provider.of<User>(context, listen: false);
 
@@ -269,7 +267,7 @@ class _AllPostsState extends State<AllPosts> {
     });
   }
 
-    ///
+  ///
   _showProfilePicAndName(
       String ownerId,
       String timeStamp,
@@ -304,6 +302,7 @@ class _AllPostsState extends State<AllPosts> {
                               child: Column(
                                 children: [
                                   Container(
+                                    color: Colors.blue,
                                     child: Padding(
                                       padding: const EdgeInsets.all(5.0),
                                       child: Row(
@@ -319,7 +318,6 @@ class _AllPostsState extends State<AllPosts> {
                                         ],
                                       ),
                                     ),
-                                    color: Colors.blue,
                                   ),
                                   type == 'meme' || type == "memeT"
                                       ? Padding(
@@ -753,6 +751,7 @@ class _AllPostsState extends State<AllPosts> {
           }
         });
   }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -936,8 +935,6 @@ class _AllPostsState extends State<AllPosts> {
       ),
     );
   }
-
-
 
   _description(String description) {
     return description.length == 0
