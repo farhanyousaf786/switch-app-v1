@@ -36,13 +36,12 @@ class _VideoStatusState extends State<VideoStatus> {
   bool uploading = false;
   String postId = Uuid().v4();
   bool isTextStatus = false;
-  bool _isComposing = false;
   String isMeme = "false";
   String isAdvice = "false";
   String isLifeExperience = "false";
   String doubleSlitShow = "false";
   String statusTheme = "status";
-  TextEditingController _captionText = TextEditingController();
+  final TextEditingController _captionText = TextEditingController();
 
   @override
   void initState() {
@@ -60,7 +59,7 @@ class _VideoStatusState extends State<VideoStatus> {
       ..initialize().then((_) {
         print("position::::" + "${_controller.value.duration}");
 
-        if (_controller.value.duration > Duration(seconds: 60)) {
+        if (_controller.value.duration > const Duration(seconds: 60)) {
           showModalBottomSheet(
               useRootNavigator: true,
               isScrollControlled: true,
@@ -69,7 +68,7 @@ class _VideoStatusState extends State<VideoStatus> {
               clipBehavior: Clip.antiAliasWithSaveLayer,
               context: context,
               builder: (context) {
-                return Container(
+                return SizedBox(
                   height: MediaQuery.of(context).size.height / 3,
                   child: SingleChildScrollView(
                     child: Column(
@@ -91,8 +90,8 @@ class _VideoStatusState extends State<VideoStatus> {
                           ),
                           color: Colors.blue,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Text(
                             "Video Duration Must be less then 60 Seconds",
                             style: TextStyle(
@@ -173,7 +172,7 @@ class _VideoStatusState extends State<VideoStatus> {
 
 
   uploadViaDoSpace(file) async {
-    dospace.Spaces spaces = new dospace.Spaces(
+    dospace.Spaces spaces = dospace.Spaces(
       //change with your project's region
       region: "nyc3",
       //change with your project's accessKey
@@ -331,170 +330,168 @@ class _VideoStatusState extends State<VideoStatus> {
   _statusTheme() {
     return Padding(
       padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 10),
-      child: Container(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  if (isMeme == "true") {
-                    setState(() {
-                      isMeme = "false";
-                    });
-                  } else {
-                    setState(() {
-                      isMeme = "true";
-                      isLifeExperience = "false";
-                      isAdvice = 'false';
-                      doubleSlitShow = 'false';
-                      statusTheme = 'Meme';
-                    });
-                  }
-                },
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 3, right: 5),
-                      child: Icon(
-                        isMeme == "false"
-                            ? Icons.check_circle_outline
-                            : Icons.check_circle,
-                        size: 18,
-                        color: isMeme == "false" ? Colors.grey : Colors.blue,
-                      ),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            GestureDetector(
+              onTap: () {
+                if (isMeme == "true") {
+                  setState(() {
+                    isMeme = "false";
+                  });
+                } else {
+                  setState(() {
+                    isMeme = "true";
+                    isLifeExperience = "false";
+                    isAdvice = 'false';
+                    doubleSlitShow = 'false';
+                    statusTheme = 'Meme';
+                  });
+                }
+              },
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3, right: 5),
+                    child: Icon(
+                      isMeme == "false"
+                          ? Icons.check_circle_outline
+                          : Icons.check_circle,
+                      size: 18,
+                      color: isMeme == "false" ? Colors.grey : Colors.blue,
                     ),
-                    Text(
-                      "Meme",
-                      style: TextStyle(
-                          color: Colors.blue, fontFamily: 'cute', fontSize: 18),
-                    ),
-                  ],
-                ),
+                  ),
+                  const Text(
+                    "Meme",
+                    style: TextStyle(
+                        color: Colors.blue, fontFamily: 'cute', fontSize: 18),
+                  ),
+                ],
               ),
-              SizedBox(
-                width: 10,
-              ),
-              GestureDetector(
-                onTap: () {
-                  if (isLifeExperience == "true") {
-                    setState(() {
-                      isLifeExperience = "false";
-                    });
-                  } else {
-                    setState(() {
-                      isLifeExperience = "true";
-                      isMeme = 'false';
-                      doubleSlitShow = 'false';
-                      isAdvice = 'false';
-                      statusTheme = 'Life Experience';
-                    });
-                  }
-                },
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 3, right: 5),
-                      child: Icon(
-                        isLifeExperience == "false"
-                            ? Icons.check_circle_outline
-                            : Icons.check_circle,
-                        size: 18,
-                        color: isLifeExperience == "false"
-                            ? Colors.grey
-                            : Colors.blue,
-                      ),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            GestureDetector(
+              onTap: () {
+                if (isLifeExperience == "true") {
+                  setState(() {
+                    isLifeExperience = "false";
+                  });
+                } else {
+                  setState(() {
+                    isLifeExperience = "true";
+                    isMeme = 'false';
+                    doubleSlitShow = 'false';
+                    isAdvice = 'false';
+                    statusTheme = 'Life Experience';
+                  });
+                }
+              },
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3, right: 5),
+                    child: Icon(
+                      isLifeExperience == "false"
+                          ? Icons.check_circle_outline
+                          : Icons.check_circle,
+                      size: 18,
+                      color: isLifeExperience == "false"
+                          ? Colors.grey
+                          : Colors.blue,
                     ),
-                    Text(
-                      "Life Experience",
-                      style: TextStyle(
-                          color: Colors.blue, fontFamily: 'cute', fontSize: 18),
-                    ),
-                  ],
-                ),
+                  ),
+                  const Text(
+                    "Life Experience",
+                    style: TextStyle(
+                        color: Colors.blue, fontFamily: 'cute', fontSize: 18),
+                  ),
+                ],
               ),
-              SizedBox(
-                width: 10,
-              ),
-              GestureDetector(
-                onTap: () {
-                  if (isAdvice == "true") {
-                    setState(() {
-                      isAdvice = "false";
-                    });
-                  } else {
-                    setState(() {
-                      isAdvice = "true";
-                      isMeme = 'false';
-                      isLifeExperience = 'false';
-                      doubleSlitShow = 'false';
-                      statusTheme = 'Advice';
-                    });
-                  }
-                },
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 3, right: 5),
-                      child: Icon(
-                        isAdvice == "false"
-                            ? Icons.check_circle_outline
-                            : Icons.check_circle,
-                        size: 18,
-                        color: isAdvice == "false" ? Colors.grey : Colors.blue,
-                      ),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            GestureDetector(
+              onTap: () {
+                if (isAdvice == "true") {
+                  setState(() {
+                    isAdvice = "false";
+                  });
+                } else {
+                  setState(() {
+                    isAdvice = "true";
+                    isMeme = 'false';
+                    isLifeExperience = 'false';
+                    doubleSlitShow = 'false';
+                    statusTheme = 'Advice';
+                  });
+                }
+              },
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3, right: 5),
+                    child: Icon(
+                      isAdvice == "false"
+                          ? Icons.check_circle_outline
+                          : Icons.check_circle,
+                      size: 18,
+                      color: isAdvice == "false" ? Colors.grey : Colors.blue,
                     ),
-                    Text(
-                      "Advice",
-                      style: TextStyle(
-                          color: Colors.blue, fontFamily: 'cute', fontSize: 18),
-                    ),
-                  ],
-                ),
+                  ),
+                  Text(
+                    "Advice",
+                    style: TextStyle(
+                        color: Colors.blue, fontFamily: 'cute', fontSize: 18),
+                  ),
+                ],
               ),
-              SizedBox(
-                width: 10,
-              ),
-              GestureDetector(
-                onTap: () {
-                  if (doubleSlitShow == "true") {
-                    setState(() {
-                      doubleSlitShow = "false";
-                    });
-                  } else {
-                    setState(() {
-                      doubleSlitShow = "true";
-                      isMeme = "false";
-                      isLifeExperience = "false";
-                      statusTheme = 'Double Slit';
-                      isAdvice = 'false';
-                    });
-                  }
-                },
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 3, right: 5),
-                      child: Icon(
-                        doubleSlitShow == "false"
-                            ? Icons.check_circle_outline
-                            : Icons.check_circle,
-                        size: 18,
-                        color: doubleSlitShow == "false"
-                            ? Colors.grey
-                            : Colors.blue,
-                      ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            GestureDetector(
+              onTap: () {
+                if (doubleSlitShow == "true") {
+                  setState(() {
+                    doubleSlitShow = "false";
+                  });
+                } else {
+                  setState(() {
+                    doubleSlitShow = "true";
+                    isMeme = "false";
+                    isLifeExperience = "false";
+                    statusTheme = 'Double Slit';
+                    isAdvice = 'false';
+                  });
+                }
+              },
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3, right: 5),
+                    child: Icon(
+                      doubleSlitShow == "false"
+                          ? Icons.check_circle_outline
+                          : Icons.check_circle,
+                      size: 18,
+                      color: doubleSlitShow == "false"
+                          ? Colors.grey
+                          : Colors.blue,
                     ),
-                    Text(
-                      "Double Slit Show",
-                      style: TextStyle(
-                          color: Colors.blue, fontFamily: 'cute', fontSize: 18),
-                    ),
-                  ],
-                ),
+                  ),
+                  Text(
+                    "Double Slit Show",
+                    style: TextStyle(
+                        color: Colors.blue, fontFamily: 'cute', fontSize: 18),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -604,7 +601,6 @@ class _VideoStatusState extends State<VideoStatus> {
                   controller: _captionText,
                   onChanged: (String text) {
                     setState(() {
-                      _isComposing = text.length > 0;
                     });
                   },
                   keyboardType: TextInputType.multiline,
